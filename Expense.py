@@ -111,7 +111,7 @@ class SplitGrid(GridLayout):
             split_amount = total_amount / num_people
 
             # Display result
-            self.result_label.text = ("Each person owes: Rs.",split_amount)
+            self.result_label.text = "Each person owes: Rs.",str(split_amount)
         except ValueError:
             self.result_label.text = "Invalid input. Please enter valid numbers."
 
