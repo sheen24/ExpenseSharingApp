@@ -1,0 +1,104 @@
+WindowManager:
+	HomeWindow:
+	FirstWindow:
+	DisplayWindow:
+	SecondWindow:
+
+<HomeWindow>:
+	name:"Home"
+	BoxLayout:
+		orientation:"vertical"
+		size: root.width,root.height
+
+		Label:
+			text:"WELCOME TO EXPENSE SHARING APP"
+			font_size: 32
+		Button:
+			text:"Click Here to Add Expenses "
+			font_size: 32
+			bold:True
+			background_color:'#0000FF'
+			on_release:
+				app.root.current="first"
+				root.manager.transition.direction ="left"
+		Button:
+			text:"Click Here to Slipt Bill"
+			font_size: 32
+			bold:True
+			background_color:'#0000FF'
+			on_release:
+				app.root.current="second"
+				root.manager.transition.direction ="left"
+
+		
+	
+<FirstWindow>:
+	name:"first"
+	
+		
+	BoxLayout:
+		orientation:"horizontal"
+		size: root.width,root.height
+		size_hint_y: 0.3
+
+	
+
+		Button:
+			text:"Go Back"
+			font_size: 20
+			size_hint: (1,0.3)
+			bold:True
+			background_color:'#00FFCE'
+			on_release:
+				app.root.current="Home"
+				root.manager.transition.direction ="right"
+				
+
+
+<DisplayWindow>:
+	name: "display"
+	BoxLayout:
+		orientation: "vertical"
+		size: root.width, root.height
+
+	Label:
+		text: "This is the content of the display window."
+
+	Button:
+		text: "Go Back"
+		font_size: 20
+		size_hint: (1, 0.3)
+		bold: True
+		background_color: '#00FFCE'
+		on_release:
+			app.root.current = "Home"
+			root.manager.transition.direction = "right"
+
+
+
+<SecondWindow>:
+	name:"second"
+		
+	BoxLayout:
+		orientation:"horizontal"
+		size: root.width,root.height
+		size_hint_y: 0.3
+
+	
+
+		Button:
+			text:"Go Back"
+			font_size: 20
+			size_hint: (1,0.3)
+			bold:True
+			background_color:'#00FFCE'
+			on_release:
+				app.root.current="Home"
+				root.manager.transition.direction ="right"
+				
+
+
+
+
+	
+
