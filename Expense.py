@@ -52,41 +52,17 @@ class ExpenseGrid(GridLayout):
         print("You have entered your details successfully")
 
     
-    """def click_me2(self, instance):
-        with open('data.csv', 'r') as file:
-            csv_reader = csv.reader(file)
-            for row in csv_reader:
-                print(row)
+   
+    
     def click_me2(self, instance):
         with open('data.csv', 'r') as file:
             csv_reader = csv.reader(file)
             self.data = list(csv_reader)
 
-        # Create a new widget to display the data
-        data_display = GridLayout(cols=3, spacing=10)
-
-        # Add headers
-        data_display.add_widget(Label(text='Name', font_size=20))
-        data_display.add_widget(Label(text='Category', font_size=20))
-        data_display.add_widget(Label(text='Amount', font_size=20))
-
-        # Add data rows
-        for row in self.data:
-            for col in row:
-                data_display.add_widget(Label(text=col, font_size=16))
-
-        # Add the data display widget to the screen
-        self.parent.add_widget(data_display)"""
-    def click_me2(self, instance):
-        with open('data.csv', 'r') as file:
-            csv_reader = csv.reader(file)
-            self.data = list(csv_reader)
-
-        # Switch to the DisplayWindow
+    
         app = App.get_running_app()
         app.root.transition.direction = 'up'  # Specify the transition direction
         app.root.current = 'display'
-        # Call the display_data method of the DisplayWindow
         app.root.get_screen('display').display_data(self.data)
         
 
@@ -129,14 +105,13 @@ class SplitGrid(GridLayout):
             tip_percentage = float(self._per.text)
             num_people = int(self.s_people.text)
 
-            # Calculate total amount with tip
+          
             total_amount = bill_amount * (1 + tip_percentage / 100)
 
-            # Calculate split amount per person
             split_amount = total_amount / num_people
 
-            # Display the result
-            self.result_label.text = f"Each person owes: ${split_amount:.2f}"
+            # Display result
+            self.result_label.text = ("Each person owes: Rs.",split_amount)
         except ValueError:
             self.result_label.text = "Invalid input. Please enter valid numbers."
 
@@ -145,7 +120,7 @@ class SplitGrid(GridLayout):
           
        
 
-# screens
+
 class HomeWindow(Screen):
     pass
 class FirstWindow(Screen):
@@ -154,23 +129,23 @@ class FirstWindow(Screen):
         self.add_widget(ExpenseGrid())
 class DisplayWindow(Screen):
      def display_data(self, data):
-        # Assuming you have a GridLayout in the DisplayWindow for data display
+        
         data_display = GridLayout(cols=3, spacing=10)
 
-        # Add headers
+      
         data_display.add_widget(Label(text='Name', font_size=20))
         data_display.add_widget(Label(text='Category', font_size=20))
         data_display.add_widget(Label(text='Amount', font_size=20))
 
-        # Add data rows
+        
         for row in data:
             for col in row:
                 data_display.add_widget(Label(text=col, font_size=16))
 
-        # Clear previous data before adding new data
+        
         self.clear_widgets()
 
-        # Add the data display widget to the screen
+       
         self.add_widget(data_display)
         
         go_back_button = Button(text="Go Back", font_size=20, size_hint=(1, 0.1))
@@ -190,7 +165,7 @@ class SecondWindow(Screen):
 class WindowManager(ScreenManager):
     pass
 
-#kv file
+
 
 kv = Builder.load_file('new_window.kv')
 
